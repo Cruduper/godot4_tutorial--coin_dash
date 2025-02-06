@@ -4,7 +4,10 @@ extends Area2D
 var velocity = Vector2.ZERO
 var screensize = Vector2(480, 720)
 
-
+func start():
+	set_process(true)
+	position = screensize / 2
+	$AnimatedSprite2D.animation = "idle"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -26,3 +29,6 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 		
 	
+func die():
+	$AnimatedSprite2D.animation = "hurt"
+	set_process(false)
