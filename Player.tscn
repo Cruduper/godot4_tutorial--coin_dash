@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqsoxqo8olsl6"]
+[gd_scene load_steps=16 format=3 uid="uid://cqsoxqo8olsl6"]
 
 [ext_resource type="Texture2D" uid="uid://6k0q45myi1he" path="res://assets/player/hurt/player-hurt-1.png" id="1_3w4i5"]
+[ext_resource type="Script" path="res://player.gd" id="1_xbxpy"]
 [ext_resource type="Texture2D" uid="uid://bwdj7mnqhwxhf" path="res://assets/player/hurt/player-hurt-2.png" id="2_hoadi"]
 [ext_resource type="Texture2D" uid="uid://dwfenuu7kluq" path="res://assets/player/idle/player-idle-1.png" id="3_h7w03"]
 [ext_resource type="Texture2D" uid="uid://c23hhu5ao6gge" path="res://assets/player/idle/player-idle-2.png" id="4_lervc"]
@@ -71,6 +72,7 @@ animations = [{
 size = Vector2(12.5, 15.5)
 
 [node name="Player" type="Area2D"]
+script = ExtResource("1_xbxpy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
@@ -78,7 +80,8 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dnuae")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.176478
+frame = 1
+frame_progress = 0.342272
 offset = Vector2(0, -5)
 
 [node name="player hitbox" type="CollisionShape2D" parent="."]
