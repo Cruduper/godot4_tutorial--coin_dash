@@ -1,5 +1,8 @@
 extends Area2D
 
+signal pickup
+signal hurt
+
 @export var speed = 350
 var velocity = Vector2.ZERO
 var screensize = Vector2(480, 720)
@@ -32,3 +35,7 @@ func _process(delta: float) -> void:
 func die():
 	$AnimatedSprite2D.animation = "hurt"
 	set_process(false)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
