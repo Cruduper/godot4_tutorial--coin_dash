@@ -35,6 +35,12 @@ animations = [{
 "texture": ExtResource("6_7rkl4")
 }, {
 "duration": 1.0,
+"texture": ExtResource("6_7rkl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7rkl4")
+}, {
+"duration": 1.0,
 "texture": ExtResource("7_nbec0")
 }, {
 "duration": 1.0,
@@ -48,10 +54,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_jjw86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7rkl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7rkl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7rkl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7rkl4")
 }],
 "loop": true,
-"name": &"default",
-"speed": 12.0
+"name": &"shine",
+"speed": 9.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7qmxv"]
@@ -64,7 +82,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_0d2eg")
-frame_progress = 0.3883
+animation = &"shine"
+frame = 1
+frame_progress = 0.221494
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7qmxv")
