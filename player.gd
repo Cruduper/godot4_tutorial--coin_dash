@@ -5,7 +5,7 @@ signal hurt
 
 @export var speed = 350
 var velocity = Vector2.ZERO
-var screensize = Vector2(480, 720)
+var screensize = Vector2.ZERO
 
 func start():
 	set_process(true)

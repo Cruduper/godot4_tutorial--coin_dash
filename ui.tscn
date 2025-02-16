@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxicjk1usakrp"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_i4u84"]
+[ext_resource type="FontFile" uid="uid://db6712blhqh8t" path="res://assets/Kenney Bold.ttf" id="2_wcftp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_813la"]
+font = ExtResource("2_wcftp")
+font_size = 48
+outline_size = 8
+outline_color = Color(0.258824, 0.984314, 0.286275, 1)
+shadow_size = 25
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_i4u84")
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Coin Dash!"
+label_settings = SubResource("LabelSettings_813la")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_813la")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_813la")
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -84.0
+offset_right = 129.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.4845, 0.95, 0.593117, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("2_wcftp")
+theme_override_font_sizes/font_size = 48
+text = "Start
+"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
