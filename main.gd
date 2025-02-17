@@ -1,9 +1,9 @@
 extends Node
 
 @export var coin_scene : PackedScene
-@export var playtime = 10
-@export var time_bonus = 3
-@export var start_coins = 3
+@export var playtime = 12
+@export var time_bonus = 5
+@export var start_coins = 4
 
 var level = 1
 var score = 0
@@ -24,7 +24,6 @@ func _process(delta):
 		spawn_coins()
 		
 	
-
 func new_game():
 	playing = true
 	level = 1

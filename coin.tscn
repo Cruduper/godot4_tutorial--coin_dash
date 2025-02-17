@@ -86,5 +86,5 @@ animation = &"shine"
 frame = 1
 frame_progress = 0.221494
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="coin hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7qmxv")
