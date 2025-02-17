@@ -1,9 +1,9 @@
 extends Node
 
 @export var coin_scene : PackedScene
-@export var playtime = 12
+@export var playtime = 5
 @export var time_bonus = 5
-@export var start_coins = 4
+@export var start_coins = 1
 
 var level = 1
 var score = 0
@@ -21,6 +21,7 @@ func _process(delta):
 	if playing and get_tree().get_nodes_in_group("coins").size() == 0:
 		level += 1
 		time_left += time_bonus
+		$LevelSound.play()
 		spawn_coins()
 		
 	
@@ -49,6 +50,7 @@ func _on_player_hurt():
 func _on_player_pickup():
 	score += 1
 	$UI.update_score(score)
+	$CoinSound.play()
 	
 func _on_ui_start_game():
 	new_game()
@@ -59,6 +61,7 @@ func game_over():
 	get_tree().call_group("coins", "queue_free")
 	$UI.show_game_over()
 	$Player.die()
+	$EndSound.play()
 	
 func spawn_coins():
 	for i in level + start_coins - 1:

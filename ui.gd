@@ -4,11 +4,9 @@ signal start_game
 
 func update_score(value):
 	$MarginContainer/Score.text = str(value)
-	print("Updating score to: ", value)  # Debugging print statement
 	
 func update_timer(value):
 	$MarginContainer/Time.text = str(value)
-	print("Updating timer to: ", value)  # Debugging print statement
 	
 func show_message(text):
 	$Message.text = text
