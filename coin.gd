@@ -12,8 +12,8 @@ func pickup():
 	ser_twn.tween_property(self, "scale", scale * 0.75, 0.1)
 	await ser_twn.finished
 	var para_twn = create_tween().set_parallel().set_trans((Tween.TRANS_LINEAR))
-	para_twn.tween_property(self, "scale", scale * 2.2, 0.3)
-	para_twn.tween_property(self, "modulate:a", 0.2, 0.3)
+	para_twn.tween_property(self, "scale", scale * 2, 0.2)
+	para_twn.tween_property(self, "modulate:a", 0.2, 0.2)
 	await para_twn.finished
 	queue_free()
 	

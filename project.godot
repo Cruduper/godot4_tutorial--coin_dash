@@ -25,3 +25,4 @@ window/main_scene="res://Main.tscn"
 [global_group]
 
 coins=""
+powerup=""

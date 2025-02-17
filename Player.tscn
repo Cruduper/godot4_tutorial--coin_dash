@@ -80,7 +80,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dnuae")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.420046
+frame_progress = 0.727887
 offset = Vector2(0, -5)
 
 [node name="player hitbox" type="CollisionShape2D" parent="."]
