@@ -26,3 +26,4 @@ window/main_scene="res://Main.tscn"
 
 coins=""
 powerup=""
+obstacles=""
