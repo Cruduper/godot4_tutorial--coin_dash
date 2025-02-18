@@ -86,12 +86,10 @@ func spawn_cactii():
 		var player_position = $Player.position
 		var c = cactus_scene.instantiate()
 		add_child(c)
-		c.screensize = screensize
 		while is_colliding(potential_position, player_position, 60):
 			potential_position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
 		c.position = potential_position
 
-			
 func is_colliding(area: Vector2, area2: Vector2, safety_margin: int) -> bool:
 	if abs(area.x - area2.x) < safety_margin and abs(area.y - area2.y) < safety_margin:
 		return true
@@ -131,4 +129,5 @@ func _on_powerup_timer_timeout() -> void:
 	p.screensize = screensize
 	p.position = Vector2(randi_range(0, screensize.x), 
 		randi_range(0, screensize.y))
-	
+		
+		

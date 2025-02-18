@@ -3,9 +3,15 @@ extends Area2D
 var screensize = Vector2.ZERO
 var is_in_pickup = false
 
+
+
+#//***** ENGINE FUNCTIONS *****//#	
 func _ready():
 	$AnimatedSprite2D.play("pwrup_shine")
 	
+
+
+#//***** CUSTOM FUNCTIONS *****//#	
 func pickup():
 	is_in_pickup = true
 	$"pwrup hitbox".set_deferred("disabled", true)
@@ -28,9 +34,11 @@ func blink(node):
 	para_twn.connect("finished", Callable(self, "blink").bind(node))  # Repeat to keep blinking
 
 func frames_to_seconds(frames) -> float:
-	
 	return float(frames) / 60.0
 	
+
+
+#//***** SIGNAL CONNECTIONS *****//#	
 func _on_lifetime_timeout() -> void:
 	if !is_in_pickup:
 		queue_free()
