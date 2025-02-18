@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0sm00p6mf2oh"]
+[gd_scene load_steps=4 format=3 uid="uid://c0sm00p6mf2oh"]
 
 [ext_resource type="Texture2D" uid="uid://cdgqyh5ylhhpr" path="res://assets/cactus.png" id="1_v1xud"]
+
+[sub_resource type="GDScript" id="GDScript_wiyes"]
+script/source = "extends Area2D
+
+var screensize = Vector2.ZERO
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nv5x"]
 size = Vector2(38, 55)
 
 [node name="Cactus" type="Area2D" groups=["obstacles"]]
 position = Vector2(240, 360)
+script = SubResource("GDScript_wiyes")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="cactus hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_2nv5x")
 

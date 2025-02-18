@@ -2,9 +2,11 @@ extends Node
 
 @export var coin_scene : PackedScene
 @export var powerup_scene : PackedScene
+@export var cactus_scene: PackedScene
 @export var playtime = 5
 @export var time_bonus = 5
 @export var start_coins = 1
+@export var cactii_incr_interval = 5
 
 var level = 1
 var score = 0
@@ -20,15 +22,9 @@ func _ready():
 	$Player.screensize = screensize
 	$Player.hide()
 	
-	
-	
 func _process(delta):
 	if playing and get_tree().get_nodes_in_group("coins").size() == 0:
-		level += 1
-		time_left += time_bonus
-		$LevelSound.play()
-		random_time_powerup()
-		spawn_coins()
+		level_up()
 		
 
 
@@ -45,7 +41,17 @@ func new_game():
 	$UI.update_score(score)
 	$UI.update_timer(time_left)
 	random_time_powerup()
+	spawn_cactii()
 	spawn_coins()
+	
+func level_up():
+		level += 1
+		time_left += time_bonus
+		$LevelSound.play()
+		random_time_powerup()
+		spawn_coins()
+		if int(level) % cactii_incr_interval == 0:
+			spawn_cactii()
 	
 func random_time_powerup():
 	if randf() < 0.25:
@@ -57,6 +63,7 @@ func game_over():
 	playing = false
 	$GameTimer.stop()
 	get_tree().call_group("coins", "queue_free")
+	get_tree().call_group("obstacles", "queue_free")
 	$UI.show_game_over()
 	$Player.die()
 	$EndSound.play()
@@ -68,6 +75,14 @@ func spawn_coins():
 		c.screensize = screensize
 		c.position = Vector2(randi_range(0, screensize.x), 
 			randi_range(0, screensize.y))
+			
+func spawn_cactii():
+		get_tree().call_group("obstacles", "queue_free")
+		for i in  (level / cactii_incr_interval) + 1:
+			var c = cactus_scene.instantiate()
+			add_child(c)
+			c.position = Vector2(randi_range(0, screensize.x), 
+				randi_range(0, screensize.y))
 
 
 
