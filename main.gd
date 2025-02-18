@@ -5,7 +5,9 @@ extends Node
 @export var cactus_scene: PackedScene
 @export var playtime = 5
 @export var time_bonus = 5
+@export var pwrup_time_bonus = 5
 @export var start_coins = 1
+@export var start_cactus = 1
 @export var cactii_incr_interval = 5
 
 var level = 1
@@ -77,12 +79,24 @@ func spawn_coins():
 			randi_range(0, screensize.y))
 			
 func spawn_cactii():
-		get_tree().call_group("obstacles", "queue_free")
-		for i in  (level / cactii_incr_interval) + 1:
-			var c = cactus_scene.instantiate()
-			add_child(c)
-			c.position = Vector2(randi_range(0, screensize.x), 
-				randi_range(0, screensize.y))
+	get_tree().call_group("obstacles", "queue_free")
+	for i in  (level / cactii_incr_interval) + start_cactus:
+		var potential_position = Vector2(randi_range(0, screensize.x), 
+			randi_range(0, screensize.y))
+		var player_position = $Player.position
+		var c = cactus_scene.instantiate()
+		add_child(c)
+		c.screensize = screensize
+		while is_colliding(potential_position, player_position, 60):
+			potential_position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
+		c.position = potential_position
+
+			
+func is_colliding(area: Vector2, area2: Vector2, safety_margin: int) -> bool:
+	if abs(area.x - area2.x) < safety_margin and abs(area.y - area2.y) < safety_margin:
+		return true
+	else:
+		return false
 
 
 
@@ -104,7 +118,7 @@ func _on_player_pickup(type):
 			$UI.update_score(score)
 			$CoinSound.play()
 		"powerup":
-			time_left += 5
+			time_left += pwrup_time_bonus
 			$UI.update_score(score)
 			$PowerupSound.play()
 	
