@@ -21,6 +21,7 @@ func _ready():
 	$Player.hide()
 	
 	
+	
 func _process(delta):
 	if playing and get_tree().get_nodes_in_group("coins").size() == 0:
 		level += 1
