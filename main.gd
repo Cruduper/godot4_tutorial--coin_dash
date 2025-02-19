@@ -86,7 +86,7 @@ func spawn_cactii():
 		var player_position = $Player.position
 		var c = cactus_scene.instantiate()
 		add_child(c)
-		while is_colliding(potential_position, player_position, 60):
+		while is_colliding(potential_position, player_position, 70):
 			potential_position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
 		c.position = potential_position
 

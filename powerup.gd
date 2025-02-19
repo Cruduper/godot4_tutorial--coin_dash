@@ -25,7 +25,6 @@ func pickup():
 	queue_free()
 	is_in_pickup = false
 	
-	
 func blink(node):
 	var para_twn = create_tween().set_trans(Tween.TRANS_QUART)
 	para_twn.tween_property(node, "modulate:a", 0.25, frames_to_seconds(3))  # Fade out
@@ -42,3 +41,8 @@ func frames_to_seconds(frames) -> float:
 func _on_lifetime_timeout() -> void:
 	if !is_in_pickup:
 		queue_free()
+		
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("obstacles"):
+		position = Vector2(randi_range(0, screensize.x),
+			randi_range(0, screensize.y))
